@@ -2,16 +2,21 @@
 using namespace std;
 
 int main() {
-    int n = 1000000;
     double pi = 0.0;
+    double termino = 1.0;
+    int terminosCalculados = 0;
+    
+    double precisionDeseada = 0.0000001;
 
-    for (int i = 0; i < n; i++) {
-        double termino = 1.0 / (2 * i + 1);
-        if (i % 2 == 0) {
+    while (termino >= precisionDeseada) {
+        if (terminosCalculados % 2 == 0) {
             pi += termino;
         } else {
             pi -= termino;
         }
+
+        terminosCalculados++;
+        termino = 1.0 / (2 * terminosCalculados + 1);
     }
 
     pi *= 4;
